@@ -20,12 +20,26 @@ const App: React.FC = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(scrollToBottom, [messages]);
+
+  
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      
+    
+      video.style.pointerEvents = 'none';
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +75,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-900">
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -102,4 +117,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-

@@ -1,6 +1,6 @@
 # Milo - Your Friendly AI Chatbot Companion
 
-![Milo the Chatbot](/milothechatbot.png)
+![Milo the Chatbot](./milothechatbot.png)
 
 ## Introduction
 
